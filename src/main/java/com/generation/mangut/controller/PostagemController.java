@@ -69,7 +69,7 @@ public class PostagemController {
 		return ResponseEntity.status(HttpStatus.OK).build();
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("/{id}")
 	public ResponseEntity <Postagem> deleteById(@PathVariable Long id){
 		if(!postagemRepository.existsById(id) || id == null){
 			return ResponseEntity.notFound().build();
