@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -24,6 +26,21 @@ public class Postagem {
 	@UpdateTimestamp
 	private LocalDateTime date;
 	
+	@NotBlank (message = "O título é obrigatório!")
+	@Size (min = 10, max = 200, message = "O título deve conter de 10 a 200 caracteres.")
+	private String titulo;
+	
+	@NotBlank (message = "O texto é obrigatório!")
+	@Size (min = 10, max = 1000, message = "O texto deve conter de 10 a 1000 caracteres.")
+	private String texto;
+	
+	private String midia;
+	
+	private Long like;
+	
+	@Size (max = 100, message = "A palavra-chave deve conter no máximo 100 caracteres.")
+	private String palavraChave;
+	
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private Tema tema;
@@ -31,7 +48,6 @@ public class Postagem {
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private Usuario usuario;
-	
 	
 	public Long getId() {
 		return id;
@@ -63,6 +79,46 @@ public class Postagem {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public String getTexto() {
+		return texto;
+	}
+
+	public void setTexto(String texto) {
+		this.texto = texto;
+	}
+
+	public String getMidia() {
+		return midia;
+	}
+
+	public void setMidia(String midia) {
+		this.midia = midia;
+	}
+
+	public Long getLike() {
+		return like;
+	}
+
+	public void setLike(Long like) {
+		this.like = like;
+	}
+
+	public String getPalavraChave() {
+		return palavraChave;
+	}
+
+	public void setPalavraChave(String palavraChave) {
+		this.palavraChave = palavraChave;
 	}
 
 	
