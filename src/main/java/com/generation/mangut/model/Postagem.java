@@ -36,7 +36,7 @@ public class Postagem {
 	
 	private String midia;
 	
-	//private Integer like;
+	private int curtir;
 	
 	@Size (max = 100, message = "A palavra-chave deve conter no máximo 100 caracteres.")
 	private String palavraChave;
@@ -105,13 +105,13 @@ public class Postagem {
 		this.midia = midia;
 	}
 
-	/*public int getLike() {
-		return like;
-	}*/
+	public int getCurtir() {
+		return curtir;
+	}
 
-	/*public void setLike(int like) {
-		this.like = like;
-	}*/
+	public void setCurtir(int curtir) {
+		this.curtir = curtir;
+	}
 
 	public String getPalavraChave() {
 		return palavraChave;

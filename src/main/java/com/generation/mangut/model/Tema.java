@@ -23,11 +23,11 @@ public class Tema {
 	private Long id;
 	
 	@NotBlank
-	@Size (min = 5, max = 100, message = "A descrição deve ter no mínimo 5 caracteres, e no máximo 100")
+	@Size (min = 5, max = 500, message = "A descrição deve ter no mínimo 5 caracteres, e no máximo 500")
 	private String descricao;
 	
 	@NotBlank
-	@Size (min = 5, max = 20, message = "A categoria deve ter no mínimo 5 caracteres, e no máximo 100")
+	@Size (min = 5, max = 200, message = "A categoria deve ter no mínimo 5 caracteres, e no máximo 200")
 	private String categoria;
 	
 	@OneToMany (mappedBy = "tema", cascade = CascadeType.REMOVE)
