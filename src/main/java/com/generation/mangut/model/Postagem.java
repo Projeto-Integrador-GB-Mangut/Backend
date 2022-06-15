@@ -2,6 +2,7 @@ package com.generation.mangut.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,6 +37,7 @@ public class Postagem {
 	
 	private String midia;
 	
+	@Column (columnDefinition = "integer default 0")
 	private int curtir;
 	
 	@Size (max = 100, message = "A palavra-chave deve conter no máximo 100 caracteres.")
