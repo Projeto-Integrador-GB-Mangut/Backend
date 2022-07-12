@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.generation.mangut.model.Postagem;
 import com.generation.mangut.repository.PostagemRepository;
+import com.generation.mangut.service.PostagemService;
 
 @RestController
 @RequestMapping ("/postagens")
@@ -27,6 +28,9 @@ public class PostagemController {
 	
 	@Autowired
 	private PostagemRepository postagemRepository;
+	
+	@Autowired
+	private PostagemService postagemService;
 	
 	@GetMapping
 	public ResponseEntity <List<Postagem>> getAll(){
@@ -53,6 +57,18 @@ public class PostagemController {
 	@GetMapping("/palavrachave/{palavraChave}")
 	public ResponseEntity <List<Postagem>> getByPalavraChave(@PathVariable String palavraChave){
 		return ResponseEntity.ok(postagemRepository.findAllByPalavraChaveContainingIgnoreCase(palavraChave));
+	}
+	
+	@PutMapping("curtir/{id}")
+	public ResponseEntity <Postagem> curtir (@PathVariable Long id) {
+		return postagemService.curtir(id).map(resposta -> ResponseEntity.ok(resposta))
+				.orElse(ResponseEntity.badRequest().build());
+	}
+	
+	@PutMapping("descurtir/{id}")
+	public ResponseEntity <Postagem> descurtir (@PathVariable Long id) {
+		return postagemService.descurtir(id).map(resposta -> ResponseEntity.ok(resposta))
+				.orElse(ResponseEntity.badRequest().build());
 	}
 	
 	@PostMapping
