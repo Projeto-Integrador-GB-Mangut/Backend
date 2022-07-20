@@ -27,7 +27,7 @@ public class Usuario {
 	private Long id;
 	
 	@NotBlank
-	@Size (min = 8, message = "O nome deve ter no minimo 8 caracteres")
+	@Size (min = 3, max = 15, message = "O nome deve ter entre 3 e 15 caracteres")
 	private String nome;
 	
 	@Schema(example = "email@email.com.br")
